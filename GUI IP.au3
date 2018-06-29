@@ -150,7 +150,7 @@ GUISetState(@SW_HIDE, $aPanel[$i])
 EndIf
 Next
 Case $hFooter
-ShellExecute("http://www.texasatmnetwork.com")
+ShellExecute("http://www.onsitebin.com")
 EndSwitch
 Case $aPanel[2]
 Switch $nMsg[0]
@@ -160,14 +160,14 @@ Case $hButton1
    $_Cmd4 = ' mask='
    $_Cmd5 = ' gateway='
    ; netsh interface ipv4 set address name=Ethernet static 192.168.1.101 mask=255.255.255.0 gateway=192.168.1.1
-   Run(@ComSpec & $_Cmd2 & GUICtrlRead($sInput1) & $_Cmd3 & GUICtrlRead($_Input2) & $_Cmd4 & GUICtrlRead($sInput3) & $_Cmd5 & GUICtrlRead($sInput4), '',@SW_SHOWNORMAL)
+   RunWait(@ComSpec & $_Cmd2 & GUICtrlRead($sInput1) & $_Cmd3 & GUICtrlRead($_Input2) & $_Cmd4 & GUICtrlRead($sInput3) & $_Cmd5 & GUICtrlRead($sInput4), '',@SW_HIDE)
    MsgBox(32, "Test", $_Cmd2 & GUICtrlRead($sInput1) & $_Cmd3 & GUICtrlRead($_Input2) & $_Cmd4 & GUICtrlRead($sInput3) & $_Cmd5 & GUICtrlRead($sInput4))
    MsgBox(32, "Test", "NetName is " & GUICtrlRead($sInput1) & ".")
 EndSwitch
 
 Switch $nMsg[0]
 Case $hButton2
-   Run(@ComSpec & ' /k netsh interface ip set address ' & '"' & GUICtrlRead($sInput1) & '" dhcp', "", @SW_SHOWNORMAL)
+   RunWait(@ComSpec & ' /k netsh interface ip set address ' & '"' & GUICtrlRead($sInput1) & '" dhcp', "", @SW_HIDE)
 EndSwitch
 
 Switch $nMsg[0]
