@@ -1,0 +1,41 @@
+auto it netsh commands
+
+netsh int ipv4 set address name=Ethernet static 192.168.1.101 mask=255.255.255.0 gateway=192.168.1.1
+
+netsh interface ip set address "Ethernet" static 192.168.1.102 255.255.255.0 192.168.1.1 1
+netsh interface ip set address "Ethernet" dhcp
+
+
+Static
+$netname = "Local Area Connection"
+$newIp = "192.168.3.35"
+$newSubnet = "255.255.255.0"
+$newDG = "192.168.3.1"
+
+runwait ('netsh interface ip set address name=' & '"' & $netname & '" static ' & $newIP & ' '& $newSubnet & ' ' & $newDG & ' 1',"",@SW_Hide)
+
+DHCP
+
+$netname = "Local Area Connection"
+runwait ('netsh interface ip set address name=' & '"' & $netname & '" dhcp', "", @SW_HIDE)
+
+Open Network Connections
+ncpa.cpl
+Run(@SystemDir&'\ncpa.cpl')
+
+Run("rundll32.exe shell32,Control_RunDLL ncpa.cpl")
+WinWait("Network Connections")
+WinActivate("Network Connections")
+WinWaitActive("Network Connections")
+
+-------------------------------------
+
+
+1 how far over
+2 how far down
+3 how long going over
+4 how long going down
+
+netsh int ipv4 set address name=Ethernet static 192.168.1.101 mask=255.255.255.0 gateway=192.168.1.1
+
+
